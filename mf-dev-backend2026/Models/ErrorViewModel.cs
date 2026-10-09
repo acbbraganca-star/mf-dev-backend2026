@@ -1,4 +1,7 @@
 namespace mf_dev_backend2026.Models
+
+#nullable enable
+
 {
     public class ErrorViewModel
     {
