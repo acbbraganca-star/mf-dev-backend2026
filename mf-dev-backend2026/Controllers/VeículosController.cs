@@ -1,5 +1,4 @@
-﻿
-using mf_dev_backend2026.Models;
+﻿using mf_dev_backend2026.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,23 +18,109 @@ namespace mf_dev_backend2026.Controllers
             return View(dados);
         }
 
-        public IActionResult Create()         
-        
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task <IActionResult> Create(Veículo veículo)
-
+        public async Task<IActionResult> Create(Veículo veiculo)
         {
             if (ModelState.IsValid)
             {
-                _context.Veiculos.Add(veículo);
+                _context.Veiculos.Add(veiculo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            return View(veiculo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Veículo veiculo)
+        {
+            if (id != veiculo.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(veiculo);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            return View(veiculo);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            return View(veiculo);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Veiculos.Remove(veiculo);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }
