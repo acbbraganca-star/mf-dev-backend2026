@@ -1,0 +1,23 @@
+@model mf_dev_backend2026.Models.Usuario
+
+@{
+    ViewData["Title"] = "Deletar Usuário";
+}
+
+<h1>Deletar Usuário</h1>
+<h3 class="text-danger">Tem certeza de que deseja deletar este registro?</h3>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Nome)</dt>
+    <dd class="col-sm-10">@Html.DisplayFor(model => model.Nome)</dd>
+
+    <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Perfil)</dt>
+    <dd class="col-sm-10">@Html.DisplayFor(model => model.Perfil)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Deletar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>

@@ -2,6 +2,7 @@ using mf_dev_backend2026.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Usuarios/Login";            
+        options.AccessDeniedPath = "/Usuarios/AccessDenied"; 
+    });
 
 var app = builder.Build();
 
@@ -45,3 +54,7 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+app.UseRouting();
+app.UseAuthentication();   
+app.UseAuthorization();    

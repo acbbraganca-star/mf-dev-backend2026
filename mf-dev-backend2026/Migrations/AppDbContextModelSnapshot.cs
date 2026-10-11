@@ -22,7 +22,7 @@ namespace mf_dev_backend2026.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SeuProjeto.Models.Consumo", b =>
+            modelBuilder.Entity("mf_dev_backend2026.Models.Consumo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,6 +60,30 @@ namespace mf_dev_backend2026.Migrations
                     b.ToTable("Consumos");
                 });
 
+            modelBuilder.Entity("mf_dev_backend2026.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("mf_dev_backend2026.Models.Veículo", b =>
                 {
                     b.Property<int>("Id")
@@ -87,7 +111,7 @@ namespace mf_dev_backend2026.Migrations
                     b.ToTable("Veículo");
                 });
 
-            modelBuilder.Entity("SeuProjeto.Models.Consumo", b =>
+            modelBuilder.Entity("mf_dev_backend2026.Models.Consumo", b =>
                 {
                     b.HasOne("mf_dev_backend2026.Models.Veículo", "Veiculo")
                         .WithMany("Consumos")
