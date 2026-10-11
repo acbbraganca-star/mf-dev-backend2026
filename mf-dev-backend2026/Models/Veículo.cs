@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using mf_dev_backend2026.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mf_dev_backend2026.Models
@@ -22,6 +23,8 @@ namespace mf_dev_backend2026.Models
         [Display(Name = "Ano do Modelo")]
         [Required(ErrorMessage = "Obrigatório informar o ano do modelo")]
         public int? AnoModelo { get; set; }
+
+        public ICollection<Consumo> Consumos { get; set; }
 
     }
 }

@@ -1,0 +1,45 @@
+@model IEnumerable<mf_dev_backend2026.Models.Consumo>
+
+@{
+    ViewData["Title"] = "Consumos";
+}
+
+<h1>Consumos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Adicionar novo Consumo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+            <th>@Html.DisplayNameFor(model => model.Data)</th>
+            <th>@Html.DisplayNameFor(model => model.Local)</th>
+            <th>@Html.DisplayNameFor(model => model.Valor)</th>
+            <th>@Html.DisplayNameFor(model => model.Quilometragem)</th>
+            <th>@Html.DisplayNameFor(model => model.TipoCombustivel)</th>
+            <th>@Html.DisplayNameFor(model => model.VeiculoId)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Descricao)</td>
+            <td>@Html.DisplayFor(model => item.Data)</td>
+            <td>@Html.DisplayFor(model => item.Local)</td>
+            <td>@Html.DisplayFor(model => item.Valor)</td>
+            <td>@Html.DisplayFor(model => item.Quilometragem)</td>
+            <td>@Html.DisplayFor(model => item.TipoCombustivel)</td>
+            <td>@item.Veiculo?.Nome</td>
+            <td>
+                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

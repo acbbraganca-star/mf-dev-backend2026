@@ -1,0 +1,70 @@
+@model mf_dev_backend2026.Models.Consumo
+@using mf_dev_backend2026.Models
+
+@{
+    ViewData["Title"] = "Editar Consumo";
+}
+
+<h1>Editar Consumo</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Descricao" class="form-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Data" class="form-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Local" class="form-label"></label>
+                <input asp-for="Local" class="form-control" />
+                <span asp-validation-for="Local" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Valor" class="form-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quilometragem" class="form-label"></label>
+                <input asp-for="Quilometragem" class="form-control" />
+                <span asp-validation-for="Quilometragem" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TipoCombustivel" class="form-label"></label>
+                <select asp-for="TipoCombustivel" class="form-select"
+                        asp-items="Html.GetEnumSelectList<TipoCombustivel>()"></select>
+                <span asp-validation-for="TipoCombustivel" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="VeiculoId" class="form-label"></label>
+                <select asp-for="VeiculoId" class="form-select" asp-items="ViewBag.VeiculoId"></select>
+                <span asp-validation-for="VeiculoId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

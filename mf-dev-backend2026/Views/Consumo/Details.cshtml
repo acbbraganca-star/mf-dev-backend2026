@@ -1,0 +1,36 @@
+@model mf_dev_backend2026.Models.Consumo
+
+@{
+    ViewData["Title"] = "Detalhes do Consumo";
+}
+
+<h1>Detalhes do Consumo</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Descricao)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Descricao)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Data)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Data)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Local)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Local)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Valor)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Valor)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Quilometragem)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Quilometragem)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TipoCombustivel)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.TipoCombustivel)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.VeiculoId)</dt>
+    <dd class="col-sm-9">@Model.Veiculo?.Nome</dd>
+</dl>
+
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</div>

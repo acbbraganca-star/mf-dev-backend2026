@@ -1,5 +1,7 @@
 using mf_dev_backend2026.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+var ptBR = new CultureInfo("pt-BR");
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(ptBR),
+    SupportedCultures = new[] { ptBR },
+    SupportedUICultures = new[] { ptBR }
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

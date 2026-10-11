@@ -1,0 +1,38 @@
+@model mf_dev_backend2026.Models.Consumo
+
+@{
+    ViewData["Title"] = "Deletar Consumo";
+}
+
+<h1>Deletar Consumo</h1>
+<h3 class="text-danger">Tem certeza de que deseja deletar este registro?</h3>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Descricao)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Descricao)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Data)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Data)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Local)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Local)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Valor)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Valor)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Quilometragem)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Quilometragem)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TipoCombustivel)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.TipoCombustivel)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.VeiculoId)</dt>
+    <dd class="col-sm-9">@Model.Veiculo?.Nome</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Deletar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>
